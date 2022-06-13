@@ -48,13 +48,13 @@ class Post extends Resource
         return [
             ID::make()->sortable(),
             Text::make('標題','title')->sortable()->placeholder('請輸入標題'),
-            Trix::make('內文','body'),
-            Select::make('分類','category')->options([
-                'test' => '測試',
-                'tech' => '科技'
-            ]),
-            Boolean::make('發布')->default(false),
-            Datetime::make('發布日期','publish_at')->nullable()
+            Trix::make('內文','body')->withFiles('public'),
+            // Select::make('分類','category')->options([
+            //     'test' => '測試',
+            //     'tech' => '科技'
+            // ]),
+            // Boolean::make('發布')->default(false),
+            // Datetime::make('發布日期','publish_at')->nullable()
         ];
     }
 
