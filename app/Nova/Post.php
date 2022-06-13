@@ -53,8 +53,8 @@ class Post extends Resource
             //     'test' => '測試',
             //     'tech' => '科技'
             // ]),
-            // Boolean::make('發布')->default(false),
-            // Datetime::make('發布日期','publish_at')->nullable()
+            Boolean::make('發布','is_published')->default(false),
+            Datetime::make('發布日期','publish_at')->nullable()
         ];
     }
 
