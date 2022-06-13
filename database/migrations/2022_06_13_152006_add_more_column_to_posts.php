@@ -30,6 +30,9 @@ class AddMoreColumnToPosts extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             //
+            $table->dropForeign(['user_id']);
+            $table->dropColumn('publish_at');
+            $table->dropColumn('is_published');
         });
     }
 }
