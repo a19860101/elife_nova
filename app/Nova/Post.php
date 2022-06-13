@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\Trix;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Datetime;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Post extends Resource
@@ -43,8 +47,14 @@ class Post extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('標題','title')->sortable(),
-            Textarea::make('內文','body')
+            Text::make('標題','title')->sortable()->placeholder('請輸入標題'),
+            Trix::make('內文','body'),
+            Select::make('分類','category')->options([
+                'test' => '測試',
+                'tech' => '科技'
+            ]),
+            Boolean::make('發布')->default(false),
+            Datetime::make('發布日期','publish_at')->nullable()
         ];
     }
 
