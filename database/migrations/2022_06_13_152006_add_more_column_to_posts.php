@@ -17,6 +17,7 @@ class AddMoreColumnToPosts extends Migration
             //
             $table->boolean('is_published');
             $table->datetime('publish_at')->nullable();
+            $table->foreignId('user_id')->constrained();
         });
     }
 

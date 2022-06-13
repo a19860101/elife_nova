@@ -10,7 +10,11 @@ use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Datetime;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Http\Requests\NovaRequest;
+
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Resource
 {
@@ -54,7 +58,9 @@ class Post extends Resource
             //     'tech' => '科技'
             // ]),
             Boolean::make('發布','is_published')->default(false),
-            Datetime::make('發布日期','publish_at')->nullable()
+            Datetime::make('發布日期','publish_at')->nullable(),
+            // BelongsTo::make('user')
+            Hidden::make('user_id')->default(Auth::id())
         ];
     }
 
