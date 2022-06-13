@@ -59,7 +59,7 @@ class Post extends Resource
             // ]),
             Boolean::make('發布','is_published')->default(false),
             Datetime::make('發布日期','publish_at')->nullable(),
-            // BelongsTo::make('user')
+            BelongsTo::make('作者','user','App\Nova\User')->default(Auth::id())->exceptOnForms(),
             Hidden::make('user_id')->default(Auth::id())
         ];
     }
