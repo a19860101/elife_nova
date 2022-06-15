@@ -5,6 +5,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Role extends Resource
@@ -42,7 +43,8 @@ class Role extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('名稱','title')->sortable()
+            Text::make('名稱','title')->sortable(),
+            HasMany::make('users')
         ];
     }
 
