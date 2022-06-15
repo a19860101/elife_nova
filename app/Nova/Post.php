@@ -19,6 +19,11 @@ use Illuminate\Support\Facades\Auth;
 
 class Post extends Resource
 {
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        // return $query->where('user_id', $request->user()->id );
+        return $query->where('user_id', Auth::id());
+    }
     /**
      * The model the resource corresponds to.
      *
@@ -43,7 +48,7 @@ class Post extends Resource
     ];
 
     public function title(){
-        return $this->title .'--'.$this->category->title;
+        return $this->title .'.'.$this->category->title;
     }
     public function subtitle(){
         return $this->user->name;
