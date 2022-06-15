@@ -39,8 +39,15 @@ class Post extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id','title'
     ];
+
+    public function title(){
+        return $this->title .'--'.$this->category->title;
+    }
+    public function subtitle(){
+        return $this->user->name;
+    }
 
     /**
      * Get the fields displayed by the resource.
