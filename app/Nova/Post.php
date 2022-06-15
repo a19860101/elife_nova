@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Datetime;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -62,7 +63,8 @@ class Post extends Resource
             BelongsTo::make('作者','user','App\Nova\User')->default(Auth::id())->exceptOnForms(),
             Hidden::make('user_id')->default(Auth::id()),
 
-            BelongsTo::make('category')
+            BelongsTo::make('category'),
+            BelongsToMany::make('tags')
         ];
     }
 

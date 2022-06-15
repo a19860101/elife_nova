@@ -4,6 +4,8 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Tag extends Resource
@@ -20,7 +22,7 @@ class Tag extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
@@ -41,6 +43,9 @@ class Tag extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make('title'),
+            Text::make('slug'),
+            BelongsToMany::make('posts')
         ];
     }
 
