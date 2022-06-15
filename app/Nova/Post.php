@@ -104,6 +104,7 @@ class Post extends Resource
     {
         return [
             new Filters\PostPublished,
+            new Filters\PostCategories,
         ];
     }
 

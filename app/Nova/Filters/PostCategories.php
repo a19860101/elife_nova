@@ -5,9 +5,8 @@ namespace App\Nova\Filters;
 use Laravel\Nova\Filters\Filter;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class PostPublished extends Filter
+class PostCategories extends Filter
 {
-    public $name = '發佈狀態';
     /**
      * The filter's component.
      *
@@ -25,7 +24,7 @@ class PostPublished extends Filter
      */
     public function apply(NovaRequest $request, $query, $value)
     {
-        return $query->where('is_published',$value);
+        return $query->where('category_id',$value);
     }
 
     /**
@@ -36,9 +35,10 @@ class PostPublished extends Filter
      */
     public function options(NovaRequest $request)
     {
-        return [
-            '已發佈' => 1,
-            '未發佈' => 0
-        ];
+        $categories = \App\Models\Category::all();
+        $result = $categories->mapWithKeys(function($item, $key){
+	        return [$item['title'] => $item['id']];
+        });
+        return $result;
     }
 }
