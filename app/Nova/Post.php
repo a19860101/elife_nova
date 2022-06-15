@@ -22,9 +22,9 @@ class Post extends Resource
     public static function indexQuery(NovaRequest $request, $query)
     {
         if(Auth::user()->role_id != 1){
+            // return $query->where('user_id', $request->user()->id );
             return $query->where('user_id', Auth::id());
         }
-        // return $query->where('user_id', $request->user()->id );
     }
     /**
      * The model the resource corresponds to.
@@ -102,7 +102,9 @@ class Post extends Resource
      */
     public function filters(NovaRequest $request)
     {
-        return [];
+        return [
+            new Filters\PostPublished,
+        ];
     }
 
     /**
