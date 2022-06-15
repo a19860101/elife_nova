@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Role extends Resource
@@ -20,7 +21,7 @@ class Role extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
@@ -41,6 +42,7 @@ class Role extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make('名稱','title')->sortable()
         ];
     }
 
