@@ -46,6 +46,11 @@ class Tag extends Resource
             Text::make('title'),
             Text::make('slug'),
             BelongsToMany::make('posts')
+            // ->fields(function ($request, $relatedModel) {
+            //     return [
+            //         Text::make('tags'),
+            //     ];
+            // })
         ];
     }
 
