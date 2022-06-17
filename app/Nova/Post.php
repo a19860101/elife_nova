@@ -129,7 +129,8 @@ class Post extends Resource
     public function actions(NovaRequest $request)
     {
         return [
-            new Actions\PublishPost
+            new Actions\PublishPost,
+            new Actions\UnpublishPost
         ];
     }
 }

@@ -10,12 +10,10 @@ use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class PublishPost extends Action
+class UnpublishPost extends Action
 {
     use InteractsWithQueue, Queueable;
-
-    public $name = '發布文章';
-
+    public $name = '下架文章';
     /**
      * Perform the action on the given models.
      *
@@ -28,10 +26,9 @@ class PublishPost extends Action
         //
         foreach($models as $model){
             $model->update([
-                'is_published' => true
+                'is_published' => false
             ]);
         }
-
     }
 
     /**
