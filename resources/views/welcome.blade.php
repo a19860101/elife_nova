@@ -8,12 +8,13 @@
 </head>
 <body>
     <?php
-        // $categories = \App\Models\Category::all();
+        $categories = \App\Models\Category::all();
         // $result = [];
-        $datas = [];
-        $datas['user'] = 'john';
-        $datas['mail'] = 'john@gmail.com';
-        print_r($datas);
     ?>
+    @foreach($categories as $category)
+    <?php $result = $category ?>
+    {{$result->title}}
+    {{$result->id}}
+    @endforeach
 </body>
 </html>

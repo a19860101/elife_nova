@@ -41,7 +41,7 @@ class PostCategories extends Filter
         // });
         $result = [];
         foreach($categories as $category){
-            $result[] = [$category->id => $category->title];
+            $result[$category->title] = $category->id;
         }
         return $result;
     }
