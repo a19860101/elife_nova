@@ -7,8 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    @foreach($posts as $post)
-        {{$post->title}}
-    @endforeach
+    <?php
+        // $categories = \App\Models\Category::all();
+        // $result = [];
+        $datas = [];
+        $datas['user'] = 'john';
+        $datas['mail'] = 'john@gmail.com';
+        print_r($datas);
+    ?>
 </body>
 </html>

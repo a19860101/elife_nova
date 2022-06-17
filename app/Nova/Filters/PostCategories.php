@@ -36,9 +36,13 @@ class PostCategories extends Filter
     public function options(NovaRequest $request)
     {
         $categories = \App\Models\Category::all();
-        $result = $categories->mapWithKeys(function($item, $key){
-	        return [$item['title'] => $item['id']];
-        });
+        // $result = $categories->mapWithKeys(function($item, $key){
+	    //     return [$item['title'] => $item['id']];
+        // });
+        $result = [];
+        foreach($categories as $category){
+            $result[] = [$category->id => $category->title];
+        }
         return $result;
     }
 }
