@@ -18,7 +18,7 @@ class PublishDate extends DateFilter
      */
     public function apply(NovaRequest $request, $query, $value)
     {
-        $value = Carbon::parse($value);
+        $value = Carbon::parse($value)??null;
 
         return $query->where('publish_at','<=',$value);
     }

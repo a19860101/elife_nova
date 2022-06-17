@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+    protected $fillable = ['is_published'];
     protected $casts = [
         'publish_at' => 'datetime',
     ];
