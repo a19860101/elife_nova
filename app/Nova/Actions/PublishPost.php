@@ -10,6 +10,9 @@ use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
+use Laravel\Nova\Notifications\NovaNotification;
+use Laravel\Nova\URL;
+
 class PublishPost extends Action
 {
     use InteractsWithQueue, Queueable;
@@ -30,6 +33,18 @@ class PublishPost extends Action
             $model->update([
                 'is_published' => true
             ]);
+        }
+        $users = \App\Models\User::all();
+        $post_id = $models-> pluck('id')->implode(',');
+
+        foreach($users as $user){
+            $user->notify(
+                NovaNotification::make()
+                    ->message('文章已發布')//右上小鈴鐺內訊息
+                    ->action('閱讀', URL::remote("http://localhost:8000/nova/resources/posts/{$post_id}"))
+                    // ->icon('download')
+                    ->type('info')
+                );
         }
 
     }
