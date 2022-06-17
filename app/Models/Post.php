@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Nova\Actions\Actionable;
 
 class Post extends Model
 {
     use HasFactory;
+    use Actionable;
     protected $fillable = ['is_published'];
     protected $casts = [
         'publish_at' => 'datetime',
